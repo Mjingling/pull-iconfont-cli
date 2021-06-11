@@ -35,3 +35,9 @@ downloadIconfont({
 | url   | iconfont中提供的项目在线链接，注意是 font class中的.css结尾的链接哦 | 必选 | 无 |
 | fileName | 下载后文件名  | 可选 | iconfont.css |
 | dest   | 下载后输出目录 | 可选 | 当前目录下/font文件夹 |
+
+### cli方式使用
+
+```
+npx pull-iconfont-cli download https://at.alicdn.com/t/font_313726_0uhevtktz4ld.css -f iconfont.css   -d ./src/common/css/UI/font
+```

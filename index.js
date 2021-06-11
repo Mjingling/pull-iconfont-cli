@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 const fs = require('fs')
 const path = require('path')
 const pathExists = require('path-exists').sync
@@ -44,7 +43,7 @@ function downloadIconfont (options) {
                 downloadFile({
                     fileUrl: downloadUrl,
                     destPath: dest,
-                    fileName: 'iconfont' + getPathExt(downloadUrl.split('?')[0]),
+                    fileName: getPathName(fileName) + getPathExt(downloadUrl.split('?')[0]),
                 })
             })
             // 将css文件中的url请求地址，替换为本地地址
@@ -86,6 +85,5 @@ function getPathName(url) {
 function getPathExt(url) {
     return path.parse(url).ext
 }
-
 
 module.exports = downloadIconfont

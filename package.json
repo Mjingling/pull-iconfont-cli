@@ -1,8 +1,11 @@
 {
   "name": "pull-iconfont-cli",
-  "version": "0.0.2",
+  "version": "0.0.5",
   "description": "",
   "main": "index.js",
+  "bin": {
+    "pull-iconfont-cli": "cli.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -24,7 +27,10 @@
   },
   "homepage": "https://github.com/Mjingling/pull-iconfont-cli#readme",
   "dependencies": {
+    "commander": "^7.2.0",
     "path-exists": "^4.0.0",
     "request": "^2.88.2"
+  },
+  "devDependencies": {
   }
 }
