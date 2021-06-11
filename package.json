@@ -1,0 +1,29 @@
+{
+  "name": "pull-iconfont-cli",
+  "version": "0.0.2",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mjingling/pull-iconfont-cli.git"
+  },
+  "keywords": [
+    "pull iconfont",
+    "iconfont"
+  ],
+  "files": [
+    "index.js"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mjingling/pull-iconfont-cli/issues"
+  },
+  "homepage": "https://github.com/Mjingling/pull-iconfont-cli#readme",
+  "dependencies": {
+    "request": "^2.88.2"
+  }
+}
