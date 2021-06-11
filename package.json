@@ -18,7 +18,8 @@
     "iconfont"
   ],
   "files": [
-    "index.js"
+    "index.js",
+    "cli.js"
   ],
   "author": "",
   "license": "ISC",
