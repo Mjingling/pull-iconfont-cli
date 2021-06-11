@@ -1,6 +1,6 @@
 {
   "name": "pull-iconfont-cli",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "",
   "main": "index.js",
   "bin": {
@@ -32,6 +32,5 @@
     "path-exists": "^4.0.0",
     "request": "^2.88.2"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }
