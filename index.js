@@ -1,14 +1,38 @@
 #!/usr/bin/env node
 const fs = require('fs')
 const path = require('path')
+const pathExists = require('path-exists').sync
 let request = require('request')
-let downloadPath = path.resolve(process.cwd(), './font')
+let downloadPath = path.resolve(__dirname, './font')
+const defOptions = {
+    fileName: 'iconfont.css',
+    dest: downloadPath,
+}
+
+function mkdirsSync(dirname) {
+    if (fs.existsSync(dirname)) {
+      return true;
+    } else {
+      if (mkdirsSync(path.dirname(dirname))) {
+        fs.mkdirSync(dirname);
+        return true;
+      }
+    }
+}
 /**
  * @desc 下载iconfont 图标
  * @param { String } url iconfont中提供的项目在线链接，注意是 font class中的.css结尾的链接哦
  * @param { String } fileName 目标文件名
  */
-function downloadIconfont (url, fileName) {
+function downloadIconfont (options) {
+    let mergeOptions = Object.assign(defOptions, options)
+    let { url, dest, fileName } = mergeOptions
+    // 得到路径
+    dest = path.resolve(dest)
+    if (!pathExists(dest)) {
+        console.log('目录不存在')
+        mkdirsSync(dest)
+    }
     let fileUrlArr = []
     request(url, function (err, response, body) {
         if (!err && response.statusCode == 200) {
@@ -19,7 +43,7 @@ function downloadIconfont (url, fileName) {
                 let downloadUrl = 'https:' + url.substring(5, url.length - 2)
                 downloadFile({
                     fileUrl: downloadUrl,
-                    destPath: downloadPath,
+                    destPath: dest,
                     fileName: 'iconfont' + getPathExt(downloadUrl.split('?')[0]),
                 })
             })
@@ -28,7 +52,7 @@ function downloadIconfont (url, fileName) {
             let urlParren = new RegExp(`\\/\\/at.alicdn.com\\/t\\/${pathName}`, 'ig')
             body = body.replace(urlParren, getPathName(fileName))
             body = body.replace('font-size: 16px;', '')
-            fs.writeFileSync(path.resolve(downloadPath, './'+ fileName), body)
+            fs.writeFileSync(path.resolve(dest, './'+ fileName), body)
         }
     })
 }
@@ -42,7 +66,7 @@ function downloadIconfont (url, fileName) {
 function downloadFile ({ fileName, fileUrl, destPath }) {
     let stream = fs.createWriteStream(path.resolve(destPath, `./${fileName}`));
     request(fileUrl).pipe(stream).on("close", function (err) {
-        console.log("文件[" + fileName + "]下载完毕");
+        console.log("file [" + fileName + "] downloaded");
     });
 }
 
