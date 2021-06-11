@@ -7,8 +7,13 @@
 ```
 npm i pull-iconfont-cli -D
 ```
+### cli方式使用
 
-### 使用
+```
+npx pull-iconfont-cli download https://at.alicdn.com/t/font_313726_0uhevtktz4ld.css -f iconfont.css   -d ./src/common/css/UI/font
+```
+
+### 包方式使用
 ```javascript
 const downloadIconfont = require('pull-iconfont-cli')
 let downloadUrl = 'https://at.alicdn.com/t/font_313726_0uhevtktz4ld.css'
@@ -36,8 +41,3 @@ downloadIconfont({
 | fileName | 下载后文件名  | 可选 | iconfont.css |
 | dest   | 下载后输出目录 | 可选 | 当前目录下/font文件夹 |
 
-### cli方式使用
-
-```
-npx pull-iconfont-cli download https://at.alicdn.com/t/font_313726_0uhevtktz4ld.css -f iconfont.css   -d ./src/common/css/UI/font
-```
