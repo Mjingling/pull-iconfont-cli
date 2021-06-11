@@ -29,7 +29,6 @@ function downloadIconfont (options) {
     // 得到路径
     dest = path.resolve(dest)
     if (!pathExists(dest)) {
-        console.log('目录不存在')
         mkdirsSync(dest)
     }
     let fileUrlArr = []
