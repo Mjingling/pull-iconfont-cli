@@ -9,8 +9,19 @@ npm i pull-iconfont-cli -D
 ```
 ### cli方式使用
 
+参数说明
 ```
-npx pull-iconfont-cli download https://at.alicdn.com/t/font_313726_0uhevtktz4ld.css -f iconfont.css   -d ./src/common/css/UI/font
+npx pull-iconfont-cli download <font class cdn链接> -d [文件下载到的目标路径] -f [文件名]
+```
+
+> 如何获取 font class cdn链接
+
+![示例图片](./img/cdn_ep.png)
+
+> 示例
+
+```
+npx pull-iconfont-cli download https://at.alicdn.com/t/font_313726_0uhevtktz4ld.css -f iconfont.css -d ./src/common/css/UI/font -f iconfont.css
 ```
 
 ### 包方式使用
