@@ -36,6 +36,7 @@ function downloadIconfont (options) {
         if (!err && response.statusCode == 200) {
             // 正则匹配出所有的字体url引用地址
             fileUrlArr = body.match(/url([\s\S]+?)[)]/ig)
+            // = /url[(]([\s\S]+?)[)]/ig
             // 将url中引用的地址都下载至iconfont存储目录
             fileUrlArr.forEach(url => {
                 let downloadUrl = 'https:' + url.substring(5, url.length - 2)
