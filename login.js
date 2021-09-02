@@ -1,13 +1,17 @@
 /*
  * @Author: xinxian_mu
  * @Date: 2021-09-01 11:52:49
- * @LastEditTime: 2021-09-02 10:01:35
+ * @LastEditTime: 2021-09-02 10:48:59
  * @LastEditors: xinxian_mu
  * @Description: 
  * @FilePath: /cloudflow/Users/baymax/Desktop/workspace/pull-iconfont-cli/login.js
  */
 const puppeteer = require('puppeteer');
 const getAllMyProjects = require('./apis/myprojects.js');
+const cdn = require('./apis/cdn.js');
+const detail = require('./apis/detail.js');
+
+let projectId = 915013
 
 function getAuthCookie (cookies) {
     let autoCookieItem = cookies.filter(c => c.name === 'EGG_SESS_ICONFONT')
@@ -40,14 +44,27 @@ async function launchChrome() {
     }, {})
     console.log(cookieMap)
     console.log(getAuthCookie(cookies))
+    const fetchHeaderCookies = Object.keys(cookieMap).map(c => `${c}=${cookieMap[c]}`)
     try {
         // 获取我所有的项目
-        let myProjects = await getAllMyProjects([`EGG_SESS_ICONFONT=${getAuthCookie(cookies)}`])
+        let myProjects = await getAllMyProjects({
+            cookies: fetchHeaderCookies,
+        })
         console.log(myProjects)
+        let cdnResponse = await cdn({
+            cookies: fetchHeaderCookies,
+        })
+        console.log(cdnResponse)
+        // 获取项目最新的详情
+        let detailInfo = await detail({
+            cookies: fetchHeaderCookies,
+            pid: projectId
+        })
+        console.log(detailInfo.font.css_file)
     } catch (error) {
-        
+        console.log(error)
     }
-    browser.close()
+    // browser.close()
 }
 
 launchChrome()
