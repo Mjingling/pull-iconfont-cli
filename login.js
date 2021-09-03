@@ -1,7 +1,7 @@
 /*
  * @Author: xinxian_mu
  * @Date: 2021-09-01 11:52:49
- * @LastEditTime: 2021-09-02 10:48:59
+ * @LastEditTime: 2021-09-03 09:34:57
  * @LastEditors: xinxian_mu
  * @Description: 
  * @FilePath: /cloudflow/Users/baymax/Desktop/workspace/pull-iconfont-cli/login.js
@@ -38,6 +38,7 @@ async function launchChrome() {
     })
     // 获取所有cookie
     const cookies = await page.cookies()
+    browser.close()
     const cookieMap = cookies.reduce((map, cookie) => {
         map[cookie.name] = cookie.value
         return map
@@ -49,12 +50,15 @@ async function launchChrome() {
         // 获取我所有的项目
         let myProjects = await getAllMyProjects({
             cookies: fetchHeaderCookies,
+            ctoken: cookieMap.ctoken
         })
         console.log(myProjects)
-        let cdnResponse = await cdn({
+        // 更新最新的链接
+        cdn({
             cookies: fetchHeaderCookies,
+            ctoken: cookieMap.ctoken,
+            pid: projectId
         })
-        console.log(cdnResponse)
         // 获取项目最新的详情
         let detailInfo = await detail({
             cookies: fetchHeaderCookies,
@@ -64,7 +68,6 @@ async function launchChrome() {
     } catch (error) {
         console.log(error)
     }
-    // browser.close()
 }
 
 launchChrome()

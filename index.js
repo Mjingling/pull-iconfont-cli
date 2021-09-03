@@ -1,7 +1,17 @@
+/*
+ * @Author: xinxian_mu
+ * @Date: 2021-06-11 12:49:21
+ * @LastEditTime: 2021-09-03 10:39:54
+ * @LastEditors: xinxian_mu
+ * @Description: 
+ * @FilePath: /cloudflow/Users/baymax/Desktop/workspace/pull-iconfont-cli/index.js
+ */
 const fs = require('fs')
 const path = require('path')
 const pathExists = require('path-exists').sync
 let request = require('request')
+var ora = require('ora');
+const spinner = ora('Loading unicorns');
 let downloadPath = path.resolve(__dirname, './font')
 const defOptions = {
     fileName: 'iconfont.css',
@@ -31,6 +41,7 @@ function downloadIconfont (options) {
     if (!pathExists(dest)) {
         mkdirsSync(dest)
     }
+    spinner.start('开始下载文件...')
     let fileUrlArr = []
     request(url, function (err, response, body) {
         if (!err && response.statusCode == 200) {
@@ -51,9 +62,10 @@ function downloadIconfont (options) {
             let urlParren = new RegExp(`\\/\\/at.alicdn.com\\/t\\/${pathName}`, 'ig')
             body = body.replace(urlParren, getPathName(fileName))
             body = body.replace('font-size: 16px;', '')
-            fs.writeFileSync(path.resolve(dest, './'+ fileName), body)
+            fs.writeFileSync(path.resolve(dest, './' + fileName), body)
         }
     })
+    spinner.succeed('下载文件成功')
 }
 /**
  * @desc 下载指定路径的文件到本地目标路径

@@ -1,15 +1,16 @@
 /*
  * @Author: xinxian_mu
  * @Date: 2021-09-02 09:33:33
- * @LastEditTime: 2021-09-02 09:59:44
+ * @LastEditTime: 2021-09-03 09:30:57
  * @LastEditors: xinxian_mu
  * @Description: 
  * @FilePath: /cloudflow/Users/baymax/Desktop/workspace/pull-iconfont-cli/apis/myprojects.js
  */
 const axiosIns = require('../axios')
 
-function getAllMyProjects({ cookies }) {
-    return axiosIns.get('/api/user/myprojects.json?page=1&t=1630466751287&ctoken=uJL6zVy-jq72CP3QJ8M6pnQ2', {
+function getAllMyProjects ({ cookies, ctoken, }) {
+    let paramsString = `page=1&t=${new Date().getTime()}&ctoken=${ctoken}&pageSize=100`
+    return axiosIns.get(`/api/user/myprojects.json?${paramsString}`, {
         headers: {
             'Content-Type': 'application/json; charset=utf-8',
             Cookie: cookies
