@@ -1,7 +1,7 @@
 /*
  * @Author: xinxian_mu
  * @Date: 2021-09-03 09:44:20
- * @LastEditTime: 2021-09-03 11:25:09
+ * @LastEditTime: 2021-09-03 11:34:28
  * @LastEditors: xinxian_mu
  * @Description: 
  * @FilePath: /cloudflow/Users/baymax/Desktop/workspace/pull-iconfont-cli/commands/pull/index.js
@@ -62,7 +62,7 @@ module.exports = {
                 })
                 spinner.start('下载文件到目标目录...')
                 let params = {
-                    url: `https://${detailInfo.font.css_file}`
+                    url: `https:${detailInfo.font.css_file}`
                 }
                 if (options.filename) {
                     params.fileName = option.filename

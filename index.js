@@ -1,7 +1,7 @@
 /*
  * @Author: xinxian_mu
  * @Date: 2021-06-11 12:49:21
- * @LastEditTime: 2021-09-03 10:39:54
+ * @LastEditTime: 2021-09-03 11:36:36
  * @LastEditors: xinxian_mu
  * @Description: 
  * @FilePath: /cloudflow/Users/baymax/Desktop/workspace/pull-iconfont-cli/index.js
@@ -63,9 +63,9 @@ function downloadIconfont (options) {
             body = body.replace(urlParren, getPathName(fileName))
             body = body.replace('font-size: 16px;', '')
             fs.writeFileSync(path.resolve(dest, './' + fileName), body)
+            spinner.succeed('下载文件成功')
         }
     })
-    spinner.succeed('下载文件成功')
 }
 /**
  * @desc 下载指定路径的文件到本地目标路径
