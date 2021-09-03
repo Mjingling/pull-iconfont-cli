@@ -9,6 +9,47 @@ npm i pull-iconfont-cli -D
 ```
 ### cli方式使用
 
+
+#### 使用cdn链接拉取到本地目录
+
+```shell
+npx pull-iconfont-cli download https://at.alicdn.com/t/font_313726_0uhevtktz4ld.css -f iconfont.css -d ./src/common/css/UI/font
+```
+
+
+#### 使用账号和密码拉取某个项目的最新的文件到本地
+
+```shell
+# 命令格式
+pull-iconfont-cli pull <pid> <username> <password> -d [文件下载到的目标路径] -f [文件名]
+# 示例
+npx pull-iconfont-cli pull 313626 13128732587 yourpassword -f iconfont.css -d ./src/common/css/UI/font
+```
+
+### 命令及参数说明
+
+> pull 命令
+
+参数说明
+```
+npx pull-iconfont-cli pull <pid> <username> <password> -d [文件下载到的目标路径] -f [文件名]
+```
+
+> 如何获取 参数pid 即项目id
+
+![示例图片](./img/pid.png)
+
+> 示例
+
+```shell
+# 不指定输出目录和文件名
+npx pull-iconfont-cli pull 313626 13128732587 yourpassword
+# 指定输出目录和文件名
+npx pull-iconfont-cli pull 313626 13128732587 yourpassword -f iconfont.css -d ./src/common/css/UI/font
+```
+
+> download 命令
+
 参数说明
 ```
 npx pull-iconfont-cli download <font class cdn链接> -d [文件下载到的目标路径] -f [文件名]
@@ -21,7 +62,7 @@ npx pull-iconfont-cli download <font class cdn链接> -d [文件下载到的目�
 > 示例
 
 ```
-npx pull-iconfont-cli download https://at.alicdn.com/t/font_313726_0uhevtktz4ld.css -f iconfont.css -d ./src/common/css/UI/font -f iconfont.css
+npx pull-iconfont-cli download https://at.alicdn.com/t/font_313726_0uhevtktz4ld.css -f iconfont.css -d ./src/common/css/UI/font
 ```
 
 ### 包方式使用
