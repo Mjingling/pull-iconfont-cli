@@ -1,6 +1,6 @@
 {
   "name": "pull-iconfont-cli",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "",
   "main": "index.js",
   "bin": {
@@ -29,9 +29,7 @@
     "ora": "5.4.0",
     "path-exists": "^4.0.0",
     "qs": "^6.10.1",
-    "request": "^2.88.2"
-  },
-  "devDependencies": {
+    "request": "^2.88.2",
     "puppeteer": "^10.2.0"
   }
 }

@@ -1,7 +1,7 @@
 /*
  * @Author: xinxian_mu
  * @Date: 2021-09-03 09:44:20
- * @LastEditTime: 2021-09-03 11:34:28
+ * @LastEditTime: 2021-09-03 12:06:46
  * @LastEditors: xinxian_mu
  * @Description: 
  * @FilePath: /cloudflow/Users/baymax/Desktop/workspace/pull-iconfont-cli/commands/pull/index.js
@@ -65,14 +65,15 @@ module.exports = {
                     url: `https:${detailInfo.font.css_file}`
                 }
                 if (options.filename) {
-                    params.fileName = option.filename
+                    params.fileName = options.filename
                 }
                 if (options.dest) {
-                    params.dest = option.dest
+                    params.dest = options.dest
                 }
                 downloadIconfont(params)
                 spinner.succeed('下载完成')
             } catch (error) {
+                console.log(error)
                 spinner.fail('Opps...拉取失败，试试自己手动下载吧')
             }
         }
