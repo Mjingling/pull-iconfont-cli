@@ -1,7 +1,7 @@
 /*
  * @Author: xinxian_mu
  * @Date: 2021-09-03 09:44:20
- * @LastEditTime: 2021-09-03 11:17:49
+ * @LastEditTime: 2021-09-03 11:25:09
  * @LastEditors: xinxian_mu
  * @Description: 
  * @FilePath: /cloudflow/Users/baymax/Desktop/workspace/pull-iconfont-cli/commands/pull/index.js
@@ -16,7 +16,6 @@ module.exports = {
     name: 'pull <pid> <username> <password>',
     desc: 'pull any project iconfiles form iconfont with your account',
     action: function (pid, username, password, options) {
-        // console.log(pid, username, password, options)
         const puppeteer = require('puppeteer');
         let projectId = pid
         async function launchChrome (username, password) {
@@ -48,7 +47,7 @@ module.exports = {
             }, {})
             const fetchHeaderCookies = Object.keys(cookieMap).map(c => `${c}=${cookieMap[c]}`)
             try {
-                   spinner.start('刷新最新的icon链接中...')
+                spinner.start('刷新最新的icon链接中...')
                 // 更新最新的链接
                 cdn({
                     cookies: fetchHeaderCookies,
