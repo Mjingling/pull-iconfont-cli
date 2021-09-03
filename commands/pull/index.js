@@ -1,7 +1,7 @@
 /*
  * @Author: xinxian_mu
  * @Date: 2021-09-03 09:44:20
- * @LastEditTime: 2021-09-03 10:55:52
+ * @LastEditTime: 2021-09-03 11:17:49
  * @LastEditors: xinxian_mu
  * @Description: 
  * @FilePath: /cloudflow/Users/baymax/Desktop/workspace/pull-iconfont-cli/commands/pull/index.js
@@ -22,7 +22,7 @@ module.exports = {
         async function launchChrome (username, password) {
             spinner.start('登录中...')
             const browser = await puppeteer.launch({
-                headless: false
+                headless: true
             })
             const page = await browser.newPage()
             await page.goto('https://www.iconfont.cn/login', {
