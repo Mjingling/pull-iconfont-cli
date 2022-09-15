@@ -1,7 +1,7 @@
 /*
  * @Author: xinxian_mu
  * @Date: 2021-06-11 12:49:21
- * @LastEditTime: 2021-09-03 11:36:36
+ * @LastEditTime: 2022-08-26 16:56:08
  * @LastEditors: xinxian_mu
  * @Description: 
  * @FilePath: /cloudflow/Users/baymax/Desktop/workspace/pull-iconfont-cli/index.js
@@ -60,7 +60,9 @@ function downloadIconfont (options) {
             // 将css文件中的url请求地址，替换为本地地址
             let pathName = getPathName(url)
             let urlParren = new RegExp(`\\/\\/at.alicdn.com\\/t\\/${pathName}`, 'ig')
+            let urlParren1 = new RegExp(`\\/\\/at.alicdn.com\\/t\\/c\\/${pathName}`, 'ig')
             body = body.replace(urlParren, getPathName(fileName))
+            body = body.replace(urlParren1, getPathName(fileName))
             body = body.replace('font-size: 16px;', '')
             fs.writeFileSync(path.resolve(dest, './' + fileName), body)
             spinner.succeed('下载文件成功')
